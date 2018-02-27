@@ -14,20 +14,20 @@ or添加class .clearfix{overflow:auto}清除浮动（父元素）
   
 6. 关于flex:
 			类似这种排列的实现：
-								a       b        c
-							  ttest	tttestte   tests
-			 <div class="share-step-No">
+				a       b        c
+			      ttesy  tttestte  tests
+		<div class="share-step-No">
                     <div class="share-step-group">
                         <span class="step-No">1</span>
                         <span class="step-tip">下载客户端</span>
                     </div>
                     <div class="share-step-group">
                         <span class="step-No">2</span>
-                        <span class="step-tip">完成注册实名支付流程</span>
+                        <span class="step-tip">完成注册流程</span>
                     </div>
                     <div class="share-step-group">
                         <span class="step-No">OK</span>
-                        <span class="step-tip">可以抽奖</span>
+                        <span class="step-tip">可以使用啦</span>
                     </div>
              </div>
 			

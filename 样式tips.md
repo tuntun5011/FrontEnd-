@@ -31,9 +31,9 @@ or添加class .clearfix{overflow:auto}清除浮动（父元素）
                     </div>
                     <div class="share-step-group">
                         <span class="step-No">OK</span>
-                        <span class="step-tip">可以使用啦</span>
-                    </div>
-             	</div>
+			<span class="step-tip">可以使用啦</span>
+		    </div>
+		</div>
 		
 ```javascript
 		.share-step-No{	/**父div**/

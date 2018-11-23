@@ -1,0 +1,33 @@
+【koa】
+		——基于node.js平台的web开发框架
+		——本地开发服务，拦截请求，返回数据；
+【webpack】
+		——打包编译
+
+
+【github redux】
+	报错：npm WARN tar ENOENT: no such file or directory, open 'D:\server\www\develop\other\github\redux\node_modules\.staging\is-stream-9fb85f55\package.json'
+	一般最主要的原因是node版本不符合！！！
+	
+	方法：删除package-lock.json、npm cache clean --force
+
+
+【react、react-router、redux/react-redux】	
+	Reducer: 纯函数，计算state，返回新的state对象；
+	action: action创建函数表面返回一个对象，实际是对数据的封装。存放数据的对象，即消息的载体，只能被被人操作，自己不能进行任何操作。
+	
+	applyMiddlewares: 将所有中间件组成一个数组，依次执行。在store.dispatch的时候增加功能。（中间件内部可以拿到getState和dispatch两个方法）
+	redux-thunk: redux-thunk中间件可以让action创建函数先不返回一个action对象，而是返回一个函数，函数传递两个参数(dispatch,getState),在函数体内进行业务逻辑的封装。
+	
+	store是一个全局对象，将action和reducer以及state联系在一起，主要职责: 
+		·维护应用的state
+		·提供getState()方法获取state
+		·提供dispatch(action)方法更新state
+		·通过subscribe(方法)注册监听器
+	
+react-redux: 
+Provider: 	在应用组件上包裹一层，使原来整个组件成为Provider的子组件；
+			接收Redux的Store作为props, 通过context对象传递给子孙组件上的connect.
+	
+connect: 	连接React组件与Redux Store，将store 中的数据作为 props 绑定到组件上。包裹在容器组件的外层，接收Provider提供的store里的state和dispach，传给一个构造函数，返回一个对象，以属性形式传递给容器组件。
+			connect([mapStateToProps], [mapDispatchToProps], [mergeProps],[options])

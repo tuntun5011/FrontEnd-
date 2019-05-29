@@ -25,7 +25,7 @@
     在某台华为手机上，底层页面仍然可以滚动
     
 原因：
-    该华为手机内置的webkit内核浏览器版本较高，dom eventTarget事件对象的addEventListener()支持passive属性，且默认是passive的。
+    该华为手机内置的webkit内核浏览器版本较高，dom eventTarget事件对象的addEventListener()支持passive属性，且passive默认被浏览器设置为true以提高性能。
     
     target.addEventListener(type, listener, options); 
     type  表示监听事件类型的字符串。 
@@ -40,26 +40,23 @@
   
   解决：
       判断浏览器是否支持passive，分情况处理。
-      
-      *** 以下代码待验证 *** 
-      var supportsPassive = false;
-      document.createElement("div").addEventListener("test", function() {}, {
-        get passive() {
-          supportsPassive = true;
-          return false;
-        }
-      }
-      
-      setTimeout(function(){
-        if(supportPassive){
-          document.addEventListener("touchmove", areaStopTouchMove, {passive:false});
-        }else{
-          document.addEventListener("touchmove", areaStopTouchMove, false);
-        }
-      },xx);
-      
+
+```
+var passiveSupported = false;
+try {
+  var options = Object.defineProperty({}, "passive", {
+    get: function() {
+      passiveSupported = true;
+    }
+  });
+  window.addEventListener("test", null, options);
+} catch(err) {}
+document.addEventListener("touchmove", areaStopTouchMove, passiveSupported ? {passive:false} :false);
+```
       
   ### 参考：
+  https://juejin.im/post/5ad804c1f265da504547fe68
+  
   https://www.cnblogs.com/ziyunfei/p/5545439.html
   
   https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener
